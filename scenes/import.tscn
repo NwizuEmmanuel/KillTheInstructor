@@ -1,4 +1,6 @@
-[gd_scene format=3 uid="uid://c73ga5iatpyjk"]
+[gd_scene load_steps=2 format=3 uid="uid://c73ga5iatpyjk"]
+
+[ext_resource type="Script" uid="uid://3gomewuf35kv" path="res://scripts/import.gd" id="1_v5jgk"]
 
 [node name="Import" type="Control"]
 layout_mode = 3
@@ -7,6 +9,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_v5jgk")
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 1
@@ -31,3 +34,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="FileDialog" type="FileDialog" parent="."]
+filters = PackedStringArray("*.json", "")
+use_native_dialog = true
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="file_selected" from="FileDialog" to="." method="_on_file_dialog_file_selected"]
